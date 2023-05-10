@@ -1,6 +1,7 @@
 import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from 'react-router-dom';
+import CircleRoundedIcon from '@mui/icons-material/CircleRounded';
 export default function Home() {
   const [showdata, setShowData] = useState([]);
   useEffect(() => {
@@ -31,9 +32,14 @@ export default function Home() {
                   <p class="card-text">
                     {language}
                    </p>
+                    <CircleRoundedIcon sx={{width:"7px"}}/>
                   <p class="card-text">
                     {genres && genres[0]}
                    </p>
+                   {
+                       genres[1] &&
+                    <CircleRoundedIcon sx={{width:"7px"}}/>
+                   }
                   <p class="card-text">
                     {genres && genres[1]}
                    </p>

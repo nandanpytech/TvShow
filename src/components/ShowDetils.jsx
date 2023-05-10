@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import {Snackbar,Alert} from '@mui/material'
+import CircleRounded from "@mui/icons-material/CircleRounded";
 
 export default function ShowDetils() {
   const { id } = useParams();
@@ -35,7 +36,7 @@ export default function ShowDetils() {
     };
     fetchdetails();
   }, []);
-  // console.log(showToast);
+
 
   return (
     <>
@@ -52,13 +53,19 @@ export default function ShowDetils() {
             />
           </div>
           <div className="section-2 col-md-8">
+
+            {/* showTitle  */}
             <h2 className="show-title mt-4 mt-md-0">
               {particularShow?.show?.name}
             </h2>
+
+
             {/* sub-details  */}
             <div className="sub-details d-flex" style={{ gap: "4rem" }}>
               <p className="text1 ">{particularShow?.show?.language}</p>
+              <CircleRounded sx={{width:"7px"}}/>
               <p className="text1">{particularShow?.show?.genres[0]}</p>
+             {particularShow?.show?.genres[1] && <CircleRounded sx={{width:"7px"}}/>}
               <p className="text1">{particularShow?.show?.genres[1]}</p>
             </div>
 
