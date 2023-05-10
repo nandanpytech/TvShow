@@ -1,13 +1,14 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   return (
     <>
       <nav className="navbar navbar-expand-lg  navbar-dark bg-dark">
         <div className="container-fluid">
-          <a className="navbar-brand order-sm-0" href="/">
+          <Link className="navbar-brand order-sm-0" to="/">
             MovieTime
-          </a>
+          </Link>
 
           <form className="d-flex col-sm-6 " role="search">
               <input

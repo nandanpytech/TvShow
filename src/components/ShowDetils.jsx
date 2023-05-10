@@ -58,10 +58,10 @@ export default function ShowDetils() {
             <h2 className="show-title mt-4 mt-md-0">
               {particularShow?.show?.name}
             </h2>
-
+          
 
             {/* sub-details  */}
-            <div className="sub-details d-flex" style={{ gap: "4rem" }}>
+            <div className="sub-details d-flex" style={{ gap: "2rem" }}>
               <p className="text1 ">{particularShow?.show?.language}</p>
               <CircleRounded sx={{width:"7px"}}/>
               <p className="text1">{particularShow?.show?.genres[0]}</p>
@@ -71,6 +71,7 @@ export default function ShowDetils() {
 
             {/* summary  */}
             <h5 className="summary-title">Summary</h5>
+            <hr/>
             <p
               className="summary-details"
               dangerouslySetInnerHTML={{
