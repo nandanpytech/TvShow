@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import {Snackbar,Alert} from '@mui/material'
+import { Snackbar, Alert } from "@mui/material";
 import CircleRounded from "@mui/icons-material/CircleRounded";
 
 export default function ShowDetils() {
@@ -20,10 +20,7 @@ export default function ShowDetils() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    localStorage.setItem("Name", userDetails.name);
-    localStorage.setItem("Email", userDetails.email);
-    localStorage.setItem("Mobile", userDetails.mobile);
-    localStorage.setItem("Card", userDetails.card);
+    localStorage.setItem("UserDetails", JSON.stringify(userDetails));
     setShowToast(!showToast);
   };
   useEffect(() => {
@@ -37,7 +34,6 @@ export default function ShowDetils() {
     fetchdetails();
   }, []);
 
-
   return (
     <>
       <div
@@ -45,7 +41,10 @@ export default function ShowDetils() {
         style={{ minHeight: "100vh" }}
       >
         <div className="row">
-          <div className="section-1 col-md-4 " style={{ height: "max-content" }}>
+          <div
+            className="section-1 col-md-4 "
+            style={{ height: "max-content" }}
+          >
             <img
               src={particularShow?.show?.image?.original}
               alt=""
@@ -53,25 +52,25 @@ export default function ShowDetils() {
             />
           </div>
           <div className="section-2 col-md-8">
-
             {/* showTitle  */}
             <h2 className="show-title mt-4 mt-md-0">
               {particularShow?.show?.name}
             </h2>
-          
 
             {/* sub-details  */}
             <div className="sub-details d-flex" style={{ gap: "2rem" }}>
               <p className="text1 ">{particularShow?.show?.language}</p>
-              <CircleRounded sx={{width:"7px"}}/>
+              <CircleRounded sx={{ width: "7px" }} />
               <p className="text1">{particularShow?.show?.genres[0]}</p>
-             {particularShow?.show?.genres[1] && <CircleRounded sx={{width:"7px"}}/>}
+              {particularShow?.show?.genres[1] && (
+                <CircleRounded sx={{ width: "7px" }} />
+              )}
               <p className="text1">{particularShow?.show?.genres[1]}</p>
             </div>
 
             {/* summary  */}
             <h5 className="summary-title">Summary</h5>
-            <hr/>
+            <hr />
             <p
               className="summary-details"
               dangerouslySetInnerHTML={{
@@ -80,6 +79,7 @@ export default function ShowDetils() {
               style={{ textAlign: "justify" }}
             ></p>
 
+            {/* Book Now  */}
             <div className="button mb-4">
               <button
                 class="btn btn-outline-primary"
@@ -92,6 +92,7 @@ export default function ShowDetils() {
           </div>
         </div>
 
+        {/* Modal FOrm  */}
         <div
           class="modal fade"
           id="exampleModal"
@@ -179,10 +180,7 @@ export default function ShowDetils() {
                   >
                     Close
                   </button>
-                  <button
-                    type="submit"
-                    class="btn btn-primary"
-                  >
+                  <button type="submit" class="btn btn-primary">
                     Submit
                   </button>
                 </div>
@@ -193,11 +191,13 @@ export default function ShowDetils() {
       </div>
 
       {showToast && (
-        <Snackbar open={showToast}
-        anchorOrigin={{ vertical: "top", horizontal: "center" }}
-        autoHideDuration={6000} onClose={()=>setShowToast(!showToast)}>
+        <Snackbar
+          open={showToast}
+          autoHideDuration={6000}
+          onClose={() => setShowToast(!showToast)}
+        >
           <Alert
-            onClose={()=>setShowToast(!showToast)}
+            onClose={() => setShowToast(!showToast)}
             severity="success"
             sx={{ width: "100%" }}
           >
